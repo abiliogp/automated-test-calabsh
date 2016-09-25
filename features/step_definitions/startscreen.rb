@@ -9,24 +9,34 @@ end
 
 
 When(/^I select any button$/) do
-  for i in 0..10
-    touch("* id:'bt1'")
-    sleep(5)
 
-    touch("* id:'bt2'")
-    sleep(5)
+end
 
-    touch("* id:'bt3'")
-    sleep(5)
-
+When(/^I select any button of speak screen$/) do
+  while !element_exists("* id:'pictureResults'")
+    buttons = ["* id:'start'", "* id:'help'", "* id:'bt1'", "* id:'bt2'", "* id:'bt3'"]
+    buttons.each do |bt|
+      if element_exists(bt)
+        touch(bt)
+        sleep(2)
+      end
+    end
   end
+
 end
 
-
-Then(/^I see Falar screen$/) do
+Then(/^I see Result screen$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then(/^I see Escrever screen$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I select any button of written screen$/) do
+  while !element_exists("* id:'pictureResults'")
+    buttons = ["* id:'start'", "* id:'sound'", "* id:'bt1'", "* id:'bt2'", "* id:'bt3'", "* id:'bt4'", "* id:'bt6'"]
+    buttons.each do |bt|
+      if element_exists(bt)
+        touch(bt)
+        sleep(2)
+      end
+    end
+  end
 end
